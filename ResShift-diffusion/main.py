@@ -34,6 +34,7 @@ def main():
             dir_15T=FLAGS.dir_15T,
             dir_3T=FLAGS.dir_3T,
             split="train",
+            split_csv=FLAGS.split_csv,
             augment=True
         )
 
@@ -63,6 +64,7 @@ def main():
             dir_15T=FLAGS.dir_15T,
             dir_3T=FLAGS.dir_3T,
             split="val",
+            split_csv=FLAGS.split_csv,
             augment=True
         )
 
@@ -98,6 +100,7 @@ def main():
             dir_15T=FLAGS.dir_15T,
             dir_3T=FLAGS.dir_3T,
             split="test",
+            split_csv=FLAGS.split_csv,
             augment=True
         )
 
@@ -160,6 +163,7 @@ if __name__ == '__main__':
     parser.add_argument('--train_tf_logging', type=utils.boolean_string, default=False, help='tensorboard logging')
     parser.add_argument('--dir_15T', type=str, default='./data/15T_to_7T', help='Path to the 15T dataset root.')
     parser.add_argument('--dir_3T', type=str, default='./data/3T_to_7T', help='Path to the 3T dataset root.')
+    parser.add_argument('--split_csv', type=str, default='./split.csv', help='Path to the shared patient-level split CSV.')
 
 
     parser.add_argument('--out_dir', type=str, default='./outputs/resshift-diffusion/train', help='Directory for train output.')
@@ -340,4 +344,3 @@ if __name__ == '__main__':
               "  " + var_str)
 
     main()
-

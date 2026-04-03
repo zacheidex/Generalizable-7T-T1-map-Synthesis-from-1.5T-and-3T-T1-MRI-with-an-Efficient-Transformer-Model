@@ -30,9 +30,9 @@ from torch.utils.data import Dataset, WeightedRandomSampler
 
 class PNG2DDataset(Dataset):
     """
-    Brain‑slice PNG dataset that follows a patient‑level split.csv.
+    Brain‑slice PNG dataset that follows a patient‑level split CSV.
 
-    new_split.csv must have two columns:
+    split.csv must have two columns:
         patient_id,split      where split ∈ {"train","val","test"} (case‑insensitive)
     """
 
@@ -41,7 +41,7 @@ class PNG2DDataset(Dataset):
         dir_15T: str,
         dir_3T: str,
         split: str,                  # "train" | "val" | "test"
-        split_csv: str,              # path to new_split.csv
+        split_csv: str,              # path to split.csv
         augment: bool = False,
     ):
         super().__init__()
@@ -546,7 +546,7 @@ def main():
         dir_15T=dir_15T,
         dir_3T=dir_3T,
         split="train",
-        split_csv="./ResViT/new_split.csv",
+        split_csv="./split.csv",
         augment=True)
 
     val_dataset = PNG2DDataset(
@@ -554,7 +554,7 @@ def main():
         dir_3T=dir_3T,
         split="val",
         augment=False,
-        split_csv="./ResViT/new_split.csv"
+        split_csv="./split.csv"
         )
 
     def list_patients(ds: PNG2DDataset, name: str):

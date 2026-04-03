@@ -132,10 +132,9 @@ Run commands from the repository root so these relative paths resolve correctly.
 
 ## Split CSV Files
 
-Two methods use an explicit patient-level split CSV:
+All three methods use the same patient-level split CSV:
 
-- [7T-Restormer/new_split.csv](./7T-Restormer/new_split.csv)
-- [ResViT/new_split.csv](./ResViT/new_split.csv)
+- [split.csv](./split.csv)
 
 Expected CSV format:
 
@@ -155,9 +154,9 @@ Rules:
 
 Method-specific behavior:
 
-- `7T-Restormer/main.py` and `7T-Restormer/main_with_lpips.py` use an explicit `--split_csv` argument.
-- `ResViT/train.py` and `ResViT/test.py` currently expect `./ResViT/new_split.csv`.
-- `ResShift-diffusion` does **not** use a fixed split CSV by default. Its custom PNG dataset loader performs a random patient split and writes a `split_sanity_check.csv` file for inspection.
+- `7T-Restormer/main.py` and `7T-Restormer/main_with_lpips.py` use an explicit `--split_csv` argument and default to `./split.csv`.
+- `ResViT/train.py` and `ResViT/test.py` default to `./split.csv`.
+- `ResShift-diffusion/main.py` now also uses the same shared `./split.csv`.
 
 ## How to Run
 
@@ -170,7 +169,7 @@ python 7T-Restormer/main.py \
   --mode train \
   --dir15 ./data/15T_to_7T \
   --dir3 ./data/3T_to_7T \
-  --split_csv ./7T-Restormer/new_split.csv \
+  --split_csv ./split.csv \
   --out_dir ./outputs/7t-restormer
 ```
 
@@ -181,7 +180,7 @@ python 7T-Restormer/main.py \
   --mode test \
   --dir15 ./data/15T_to_7T \
   --dir3 ./data/3T_to_7T \
-  --split_csv ./7T-Restormer/new_split.csv \
+  --split_csv ./split.csv \
   --ckpt ./outputs/7t-restormer/best.pth \
   --out_dir ./outputs/7t-restormer
 ```
@@ -193,7 +192,7 @@ python 7T-Restormer/main_with_lpips.py \
   --mode train \
   --dir15 ./data/15T_to_7T \
   --dir3 ./data/3T_to_7T \
-  --split_csv ./7T-Restormer/new_split.csv \
+  --split_csv ./split.csv \
   --out_dir ./outputs/7t-restormer-lpips
 ```
 
@@ -219,7 +218,7 @@ python ResViT/test.py
 What these scripts expect:
 
 - dataset under `./data/15T_to_7T` and `./data/3T_to_7T`
-- patient-level split file at `./ResViT/new_split.csv`
+- patient-level split file at `./split.csv`
 - outputs written under `./outputs/resshift`
 
 Current implementation notes:
@@ -237,6 +236,7 @@ python ResShift-diffusion/main.py \
   --train true \
   --dir_15T ./data/15T_to_7T \
   --dir_3T ./data/3T_to_7T \
+  --split_csv ./split.csv \
   --out_dir ./outputs/resshift-diffusion/train
 ```
 
@@ -247,20 +247,16 @@ python ResShift-diffusion/main.py \
   --train false \
   --dir_15T ./data/15T_to_7T \
   --dir_3T ./data/3T_to_7T \
+  --split_csv ./split.csv \
   --out_dir_test ./outputs/resshift-diffusion/test
 ```
 
 What this script expects:
 
 - dataset under `./data/15T_to_7T` and `./data/3T_to_7T`
+- patient-level split file at `./split.csv`
 - PNG slices with matched filenames across input and target folders
 - outputs written under `./outputs/resshift-diffusion`
-
-Split behavior:
-
-- the diffusion baseline does not use the fixed `new_split.csv`
-- the PNG dataset loader in [ResShift-diffusion/datasets/load_custom_data.py](./ResShift-diffusion/datasets/load_custom_data.py) performs a shuffled patient-level split internally
-- the resulting allocation is recorded in `split_sanity_check.csv`
 
 ## Outputs
 

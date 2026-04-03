@@ -342,7 +342,7 @@ def main():
     parser.add_argument("--epochs", type=int, default=40)
     parser.add_argument("--val_every", type=int, default=1)
     parser.add_argument("--num_workers", type=int, default=1)
-    parser.add_argument("--split_csv", type=str, default="new_split.csv",
+    parser.add_argument("--split_csv", type=str, default="./split.csv",
                     help="Path to CSV with columns: patient_id, split ∈ {train,val,test}. Always used.")
     parser.add_argument("--save-pngs", action="store_true",
                     help="If set, save predicted PNGs during test()")

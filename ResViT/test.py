@@ -45,7 +45,7 @@ def test_slice_by_slice(
     dir_15T, 
     dir_3T,
     checkpoint_path,
-    split_csv="new_split.csv",
+    split_csv="./split.csv",
     out_csv="test_metrics_slice_by_slice.csv",
     batch_size=4,
     device="cuda",
@@ -195,7 +195,7 @@ if __name__ == "__main__":
         dir_15T="./data/15T_to_7T",
         dir_3T="./data/3T_to_7T",
         checkpoint_path="./outputs/resshift/best_model.pth",
-        split_csv="./ResViT/new_split.csv",
+        split_csv="./split.csv",
         out_csv="./outputs/resshift/test_metrics_slice_by_slice.csv",
         batch_size=8,
         device="cuda"
