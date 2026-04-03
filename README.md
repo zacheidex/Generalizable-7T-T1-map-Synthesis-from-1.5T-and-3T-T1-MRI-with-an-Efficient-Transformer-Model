@@ -16,6 +16,10 @@ The exported codebase currently contains:
 - [ResViT](./ResViT): a residual vision transformer baseline adapted to this dataset.
 - [ResShift-diffusion](./ResShift-diffusion): a residual-shifting diffusion baseline adapted to this dataset.
 
+![Figure 1: 7T-Restormer architecture](./assets/figure1.png)
+
+*Figure 1. Overview of the proposed 7T-Restormer architecture.*
+
 This repository intentionally excludes:
 
 - raw MRI/NIfTI data
@@ -39,6 +43,10 @@ Included entrypoints:
 - [7T-Restormer/main.py](./7T-Restormer/main.py): primary non-LPIPS training/testing script using an explicit split CSV.
 - [7T-Restormer/main_with_lpips.py](./7T-Restormer/main_with_lpips.py): LPIPS/perceptual-loss variant using an explicit split CSV.
 - [7T-Restormer/model_single.py](./7T-Restormer/model_single.py): model definition.
+
+![Figure 3: qualitative synthesis examples](./assets/figure3.png)
+
+*Figure 3. Representative qualitative examples comparing synthesized 7T T1 maps with acquired ground truth.*
 
 ### ResViT
 

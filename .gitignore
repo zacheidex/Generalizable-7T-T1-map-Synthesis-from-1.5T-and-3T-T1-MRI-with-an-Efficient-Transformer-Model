@@ -34,6 +34,8 @@ datasets/
 *.tiff
 *.gif
 *.csv.tmp
+!assets/
+!assets/*.png
 
 # Local notebooks and scratch work
 *.ipynb_checkpoints
