@@ -155,8 +155,7 @@ Rules:
 Method-specific behavior:
 
 - `7T-Restormer/main.py` and `7T-Restormer/main_with_lpips.py` use an explicit `--split_csv` argument and default to `./split.csv`.
-- `ResViT/train.py` and `ResViT/test.py` default to `./split.csv`.
-- `ResShift-diffusion/main.py` now also uses the same shared `./split.csv`.
+- `ResViT/train.py`, `ResShift-diffusion/main.py`, and `ResViT/test.py` default to `./split.csv`.
 
 ## How to Run
 
@@ -221,12 +220,6 @@ What these scripts expect:
 - patient-level split file at `./split.csv`
 - outputs written under `./outputs/resshift`
 
-Current implementation notes:
-
-- `ResViT/train.py` and `ResViT/test.py` are less CLI-configurable than the 7T-Restormer scripts.
-- They are intended to be launched from the repository root with the default relative layout above.
-- `ResViT/test.py` expects a trained checkpoint at `./outputs/resshift/best_model.pth` unless the script is edited.
-
 ### ResShift-diffusion
 
 Training:
@@ -275,7 +268,6 @@ By default, the cleaned export uses repo-relative output locations under `./outp
 - This repository is a cleaned, shareable packaging of the project code, not a full refactor.
 - The three methods are not yet normalized to one common CLI/API.
 - Running from the repository root is strongly recommended because several scripts rely on relative paths.
-- [7T-Restormer/model_single.py](./7T-Restormer/model_single.py) includes an attribution note to upstream Restormer/Text-IF code in the source header.
 
 ## Citation
 
