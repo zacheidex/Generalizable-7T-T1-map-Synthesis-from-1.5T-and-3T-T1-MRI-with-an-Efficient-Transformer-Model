@@ -16,7 +16,7 @@ The exported codebase currently contains:
 - [ResViT](./ResViT): a residual vision transformer baseline adapted to this dataset.
 - [ResShift-diffusion](./ResShift-diffusion): a residual-shifting diffusion baseline adapted to this dataset.
 
-![Figure 1: 7T-Restormer architecture](./assets/figure1.png)
+![Figure 1: 7T-Restormer architecture](./assets/figure1_github.png)
 
 *Figure 1. Overview of the proposed 7T-Restormer architecture.*
 
