@@ -1,0 +1,39 @@
+__pycache__/
+*.py[cod]
+*.so
+.pytest_cache/
+.mypy_cache/
+.DS_Store
+.venv/
+venv/
+env/
+
+# Training outputs and checkpoints
+results/
+output/
+outputs/
+runs/
+logs/
+wandb/
+tensorboard/
+*.pth
+*.pt
+*.ckpt
+
+# Data and generated artifacts
+data/
+datasets/
+*.nii
+*.nii.gz
+*.npy
+*.npz
+*.png
+*.jpg
+*.jpeg
+*.tif
+*.tiff
+*.gif
+*.csv.tmp
+
+# Local notebooks and scratch work
+*.ipynb_checkpoints
